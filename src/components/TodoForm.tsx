@@ -32,13 +32,14 @@ function TodoForm() {
     const classes = useStyles();
     const [text, setText] = useState<string>("");
     const [getTodos, addTodoItem] = useTodoForm();
-
+const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
     const changeNoteHandler = (e: any) => {
         setText(e.currentTarget.value);
     }
 
     const submitTodoHandle = async (e: any) => {
         e.preventDefault()
+        setIsSubmitting(true)
         var newObj: TodoItem = {
             id: 0,
             text: text,
@@ -49,15 +50,16 @@ function TodoForm() {
             var response = await addTodoItem(newObj);
             if (response && response.status === 200) {
                 getTodos();
+                clearTextField();
             }
         } catch (err) {
             window.alert("Something went wrong!");
+        } finally {
+            setIsSubmitting(false)
         }
-
-        claerTextField();
     }
 
-    const claerTextField = () => {
+    const clearTextField = () => {
         setText("");
     }
 
@@ -76,10 +78,13 @@ function TodoForm() {
                     </Stack>
                     <Stack direction="row" spacing={2} marginTop={2}>
                         <Button type="submit"
+                            disabled={isSubmitting}
                             variant="contained" startIcon={<AddIcon />}>
-                            Add
+                            {isSubmitting ? 'Submitting... ' : 'Add'}
                         </Button>
-                        <Button variant="outlined" startIcon={<ClearIcon />} onClick={claerTextField}>
+                        <Button 
+                            disabled={isSubmitting}
+                            variant="outlined" startIcon={<ClearIcon />} onClick={clearTextField}>
                             Clear
                         </Button>
                     </Stack>

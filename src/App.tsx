@@ -27,9 +27,15 @@ const useStyles = makeStyles({
 function App() {
     const classes = useStyles();
     const [todos, setTodos] = useState<TodoItem[]>([]);
+    const [loading, setLoading] = useState<boolean>(false)
 
     return (
-        <TodoContext.Provider value={{ todos: todos, setTodos: setTodos }}>
+        <TodoContext.Provider value={{ 
+                todos: todos, 
+                loading: loading,
+                setTodos: setTodos,
+                setLoading: setLoading
+                }}>
             <div style={{ backgroundColor: `rgb(246, 243, 238)`, width: '100vw', height: '100vh' }}>
 				<div style={{ backgroundImage: `url(${require("./images/todolist-bg.png")})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', width: 'null', height: '100vh' }}>
                 	<CssBaseline />
