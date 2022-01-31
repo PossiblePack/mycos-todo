@@ -13,7 +13,7 @@ const useTodoForm = () => {
         try {
         let response = await todoApi.getTodoItems();
         if (response) {
-            if (response.data && response.data.length > 0) {
+            if (response.data) {
 
                 setTodos(response.data)
             }
