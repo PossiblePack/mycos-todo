@@ -6,17 +6,24 @@ import TodoItem from "../models/TodoItem";
 
 
 const useTodoForm = () => {
-    const { setTodos } = useContext(TodoContext);
+    const { setTodos, setLoading } = useContext(TodoContext);
 
     const getTodos = useCallback(async () => {
+        setLoading(true)
+        try {
         let response = await todoApi.getTodoItems();
         if (response) {
-            if (response.data && response.data.length > 0) {
+            if (response.data) {
 
                 setTodos(response.data)
             }
         }
-    }, [setTodos]);
+        } catch(err) {
+            window.alert('cannot fetch Todos')
+        } finally {
+            setLoading(false)
+        }
+    }, [setTodos, setLoading]);
 
     const addTodoItem = useCallback(async (item: TodoItem) => {
         let response = await todoApi.addTodoItem(item);
