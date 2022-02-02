@@ -19,4 +19,4 @@ Runs the app in the production mode with the backend endpoint in .env file (that
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `Steps to deploy the frontend webapp on Azure`
-You can follow the [azure deploy instruction](https://mycostech.sharepoint.com/:w:/r/sites/MycosInternship/_layouts/15/Doc.aspx?sourcedoc=%7BEB79ADDD-9E62-44D9-8FDE-0A059280CF2F%7D&file=Steps%20to%20deploy%20the%20frontend%20webapp%20on%20Azure.docx&action=default&mobileredirect=true) to explain steps to deploy the frontend application as Static WebApp on Azure.
+You can follow the [azure deploy instruction](https://docs.google.com/document/d/1id-xVLlx5-nNJpB2NNpuOWQLYfEmKz0b/edit) to explain steps to deploy the frontend application as Static WebApp on Azure.
